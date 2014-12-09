@@ -1,10 +1,21 @@
-var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({ port: 8080 });
+var redis = require("redis"),
+client = redis.createClient(6379, 'redis');
 
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
+var server = require('http').createServer();
+var io = require('socket.io')(server);
+
+// Socket.io configuration
+io.on('connection', function(socket){
+  socket.on('subscribeToOrg', function (data) {
+      socket.join(data.organization);
+      client.subscribe(data.organization);
   });
 
-  ws.send('something');
+  // Add unsubscribe later
+});
+server.listen(3000);
+
+// Redis PubSub configuration
+client.on('message', function(channel, message) {
+  io.to(channel).emit('tweet', {id: message});
 });

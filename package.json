@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/atbaker/tweetcheck-node",
   "dependencies": {
-    "ws": "0.6.x"
+    "redis": "0.12.x",
+    "socket.io": "^1.2.x"
   }
 }
