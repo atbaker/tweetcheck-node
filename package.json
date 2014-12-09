@@ -1,0 +1,24 @@
+{
+  "name": "tweetcheck-node",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A small Node.js application to support websockets for TweetCheck",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atbaker/tweetcheck-node.git"
+  },
+  "author": "Andrew T. Baker",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/atbaker/tweetcheck-node/issues"
+  },
+  "homepage": "https://github.com/atbaker/tweetcheck-node",
+  "dependencies": {
+    "ws": "0.6.x"
+  }
+}
