@@ -17,5 +17,5 @@ server.listen(3000);
 
 // Redis PubSub configuration
 client.on('message', function(channel, message) {
-  io.to(channel).emit('tweet', {id: message});
+  io.to(channel).emit('new');
 });
