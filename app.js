@@ -17,5 +17,9 @@ server.listen(3000);
 
 // Redis PubSub configuration
 client.on('message', function(channel, message) {
-  io.to(channel).emit('new');
+  if (message === 'new') {
+    io.to(channel).emit(message);
+  } else {
+    io.to(channel).emit('update', {id: message});
+  }
 });
